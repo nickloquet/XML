@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+        xmlns:vdab="http://www.vdab.be/artikels"
+        targetNamespace="http://www.vdab.be/artikels"
+        elementFormDefault="qualified">
+
+    <simpleType name="ProductieDatum">
+        <restriction base="date">
+            <minInclusive value="2000-01-01"/>
+        </restriction>
+    </simpleType>
+    <simpleType name="Prijs">
+        <restriction base="decimal">
+            <minInclusive value="0"/>
+            <fractionDigits value="2"/>
+        </restriction>
+    </simpleType>
+    <simpleType name="Grootte">
+        <restriction base="decimal">
+            <minExclusive value="0"/>
+        </restriction>
+    </simpleType>
+
+    <complexType name="Artikel">
+        <all>
+        <element name="productieDatum" type="vdab:ProductieDatum"/>
+        <element name="prijs" type="vdab:Prijs"/>
+        <element name="lengte" type="vdab:Grootte"/>
+        <element name="breedte" type="vdab:Grootte"/>
+        <element name="hoogte" type="vdab:Grootte"/>
+        </all>
+    </complexType>
+    <element name="artikel" type="vdab:Artikel"/>
+</schema>
